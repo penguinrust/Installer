@@ -166,7 +166,7 @@ func (di *DiscordInstall) patch() error {
 			// We are operating on a user flatpak but are root
 			actualUser := os.Getenv("SUDO_USER")
 			Log.Debug("This is a user install but we are root. Using su to run as", actualUser)
-			cmd := exec.Command("su", "-", actualUser, "-c", "sh", "-c", fullCmd)
+			cmd := exec.Command("su", "-", actualUser, "-c", fullCmd)
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 			err = cmd.Run()
@@ -215,25 +215,28 @@ func unpatchAppAsar(dir string, isSystemElectron bool) (errOut error) {
 		err = CheckIfErrIsCauseItsBusyRn(err)
 		Log.Error(err.Error())
 		errOut = err
-	} else {
-		renamesDone = append(renamesDone, []string{appAsar, appAsarTmp})
+		return
 	}
+	renamesDone = append(renamesDone, []string{appAsar, appAsarTmp})
 
 	Log.Debug("Renaming", _appAsar, "to", appAsar)
 	if err := os.Rename(_appAsar, appAsar); err != nil {
 		err = CheckIfErrIsCauseItsBusyRn(err)
 		Log.Error(err.Error())
 		errOut = err
-	} else {
-		renamesDone = append(renamesDone, []string{_appAsar, appAsar})
+		return
 	}
+	renamesDone = append(renamesDone, []string{_appAsar, appAsar})
 
 	if isSystemElectron {
-		Log.Debug("Renaming", _appAsar+".unpacked", "to", appAsar+".unpacked")
-		if err := os.Rename(_appAsar+".unpacked", appAsar+".unpacked"); err != nil {
+		from, to := _appAsar+".unpacked", appAsar+".unpacked"
+		Log.Debug("Renaming", from, "to", to)
+		if err := os.Rename(from, to); err != nil {
 			Log.Error(err.Error())
 			errOut = err
+			return
 		}
+		renamesDone = append(renamesDone, []string{from, to})
 	}
 	return
 }

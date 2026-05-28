@@ -47,10 +47,14 @@ func ParseDiscord(p, branch string) *DiscordInstall {
 			if !ExistsFile(resources) {
 				continue
 			}
+			dirIsPatched := ExistsFile(path.Join(resources, "_app.asar"))
+			if !dirIsPatched && !ExistsFile(path.Join(resources, "app.asar")) {
+				continue
+			}
 			app := path.Join(resources, "app")
 			if app > appPath {
 				appPath = app
-				isPatched = ExistsFile(path.Join(resources, "_app.asar"))
+				isPatched = dirIsPatched
 			}
 		}
 	}
@@ -129,7 +133,7 @@ func CheckScuffedInstall() bool {
 	username := os.Getenv("USERNAME")
 	programData := os.Getenv("PROGRAMDATA")
 	for _, discordName := range windowsNames {
-		if ExistsFile(path.Join(programData, username, discordName)) || ExistsFile(path.Join(programData, username, discordName)) {
+		if ExistsFile(path.Join(programData, username, discordName)) {
 			HandleScuffedInstall()
 			return true
 		}
