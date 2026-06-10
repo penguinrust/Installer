@@ -8,7 +8,7 @@
 -#cgo linux,wayland CFLAGS: -D_GLFW_WAYLAND -D_GNU_SOURCE
 +#cgo linux,!wayland,!combined CFLAGS: -D_GLFW_X11
 +#cgo linux,wayland,!combined CFLAGS: -D_GLFW_WAYLAND -D_GNU_SOURCE
-+#cgo linux,combined CFLAGS: -D_GLFW_WAYLAND -D_GLFW_X11 -D_GNU_SOURCE
++#cgo linux,combined CFLAGS: -D_GLFW_X11
  
  // Linker Options:
  #cgo linux,!gles1,!gles2,!gles3,!vulkan LDFLAGS: -lGL
@@ -20,7 +20,7 @@
 -#cgo linux,wayland LDFLAGS: -lwayland-client -lwayland-cursor -lwayland-egl -lxkbcommon -lm -ldl -lrt
 +#cgo linux,!wayland,!combined LDFLAGS: -lX11 -lXrandr -lXxf86vm -lXi -lXcursor -lm -lXinerama -ldl -lrt
 +#cgo linux,wayland,!combined LDFLAGS: -lwayland-client -lwayland-cursor -lwayland-egl -lxkbcommon -lm -ldl -lrt
-+#cgo linux,combined LDFLAGS: -lwayland-client -lwayland-cursor -lwayland-egl -lxkbcommon -lX11 -lXrandr -lXxf86vm -lXi -lXcursor -lm -lXinerama -ldl -lrt
++#cgo linux,combined LDFLAGS: -lX11 -lXrandr -lXxf86vm -lXi -lXcursor -lm -lXinerama -ldl -lrt
  
  // BSD Build Tags
  // ----------------
