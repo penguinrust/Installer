@@ -49,7 +49,7 @@ func GetInstallerDownloadLink() string {
 	const BaseUrl = "https://github.com/penguinrust/Installer/releases/latest/download/"
 	switch runtime.GOOS {
 	case "windows":
-		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "PenguinCordInstaller.exe", "PenguinCordInstaller.exe")
+		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "EquilotlCli.exe", "EquilotlCli.exe")
 		return BaseUrl + filename
 	case "darwin":
 		switch runtime.GOARCH {

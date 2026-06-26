@@ -135,7 +135,7 @@ jobs:
       - name: Build CLI
         shell: msys2 {0}
         run: |
-          CGO_ENABLED=1 GOOS=windows GOARCH=amd64 go build -v -tags "cli" -ldflags "-s -w -X 'Installer/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'Installer/buildinfo.InstallerTag=${{ github.ref_name }}'" -o PenguinCordInstaller.exe
+          CGO_ENABLED=1 GOOS=windows GOARCH=amd64 go build -v -tags "cli" -ldflags "-s -w -X 'Installer/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'Installer/buildinfo.InstallerTag=${{ github.ref_name }}'" -o EquilotlCli.exe
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
@@ -143,7 +143,7 @@ jobs:
           name: Equilotl-windows
           path: |
             Equilotl.exe
-            PenguinCordInstaller.exe
+            EquilotlCli.exe
 
   release:
     runs-on: ubuntu-latest
