@@ -7,7 +7,7 @@
 package main
 
 import (
-	"equilotl/buildinfo"
+	"Installer/buildinfo"
 	"errors"
 	"fmt"
 	"io"
@@ -46,10 +46,10 @@ func init() {
 }
 
 func GetInstallerDownloadLink() string {
-	const BaseUrl = "https://github.com/Equicord/Equilotl/releases/latest/download/"
+	const BaseUrl = "https://github.com/penguinrust/Installer/releases/latest/download/"
 	switch runtime.GOOS {
 	case "windows":
-		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "EquilotlCli.exe", "Equilotl.exe")
+		filename := Ternary(buildinfo.UiType == buildinfo.UiTypeCli, "PenguinCordInstaller.exe", "PenguinCordInstaller.exe")
 		return BaseUrl + filename
 	case "darwin":
 		switch runtime.GOARCH {

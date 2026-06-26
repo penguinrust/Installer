@@ -128,9 +128,9 @@ func InitGithubDownloader() {
 		return
 	}
 
-	Log.Debug("Found existing Equicord Install. Checking for hash...")
+	Log.Debug("Found existing PenguinCord Install. Checking for hash...")
 
-	re := regexp.MustCompile(`// Equicord (\w+)`)
+	re := regexp.MustCompile(`// PenguinCord (\w+)`)
 	match := re.FindSubmatch(b)
 	if match != nil {
 		InstalledHash = string(match[1])

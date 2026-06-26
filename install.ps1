@@ -1,6 +1,6 @@
-$link = "https://github.com/Equicord/Equilotl/releases/latest/download/EquilotlCli.exe"
+$link = "https://github.com/penguinrust/Installer/releases/latest/download/PenguinCordInstaller.exe"
 
-$outfile = "$env:TEMP\EquilotlCli.exe"
+$outfile = "$env:TEMP\PenguinCordInstaller.exe"
 
 Write-Output "Downloading installer to $outfile"
 

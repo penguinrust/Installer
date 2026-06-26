@@ -9,7 +9,7 @@ The Equicord Installer allows you to install [Equicord, the cutest Discord Deskt
 Windows
 
 - [GUI](https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl.exe)
-- [CLI](https://github.com/Equicord/Equilotl/releases/latest/download/EquilotlCli.exe)
+- [CLI](https://github.com/Equicord/Equilotl/releases/latest/download/PenguinCordInstaller.exe)
 
 MacOS
 
